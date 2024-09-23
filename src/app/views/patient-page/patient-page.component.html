@@ -1,0 +1,29 @@
+<div id="getNumberForm"  class="navbar-form navbar-center">
+    <div class="form-group">
+        <table>
+            <tr>
+                <td style="font-size: 20px">Name:</td>
+                <td><input type="text" style="font-size: 20px" #patientName></td>
+            </tr>
+            <tr>
+                <td style="font-size: 20px">Mobile Number:</td>
+                <td><input type="text" style="font-size: 20px" #patientContact></td>
+            </tr>
+        </table>
+    </div>
+    <button class="btn btn-default" (click)="getNumber(patientName.value, patientContact.value)">
+      Get Number
+    </button>
+  </div>
+  <div *ngIf="showNumbers == true">
+    <div class="card">Your Number: <br><br> <label style="font-size: 40px">{{this.patientNumber?.patientNumber}}</label></div>
+    <br>
+    <div class="card">CurrentNumber: <br><br> <label style="font-size: 40px">{{this.patientNumber?.currentNumber}}</label></div>
+  </div>
+  <div class="error-message" *ngIf="showError == true" >
+    {{this.error}}
+  </div>
+
+  
+  
+  

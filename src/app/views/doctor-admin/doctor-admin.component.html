@@ -1,0 +1,31 @@
+<!-- <form id="searchForm"  class="navbar-form navbar-center"  > -->
+  <div class="navbar-form navbar-center">
+    <button *ngIf="sessionStatus == '' || sessionStatus == 'Paused'" class="btn btn-default" (click)="startSession()">
+      Start Session
+    </button>
+    <button *ngIf="sessionStatus == 'Started'" class="btn btn-default" (click)="pauseSession()">
+      Pause Session
+    </button>
+    <button *ngIf="sessionStatus == 'Started' || sessionStatus == 'Paused'" class="btn btn-default" (click)="endSession()">
+      End Session
+    </button>
+  </div>
+  <hr/>
+  <div *ngIf="sessionStatus == 'Started' || sessionStatus == 'Paused'">
+    <div style="font-size: 20px">Total Numbers:  <label style="font-weight: bold;">{{totalNumbers}}</label></div>
+    <hr/>
+    <div class="card">Current Number  <br>
+      <label style="font-size: 30px">{{currentQueueNumber?.serialNumber}}</label><br>
+      <label>{{currentQueueNumber?.name}}</label><br>
+      <label>{{currentQueueNumber?.contactNumber}}</label>
+    </div>
+
+  <div style="text-align: center;padding-left: 10px;">
+    <button style="width: 180px; " class="btn btn-default" (click)="moveNumber()">
+      Next
+    </button>
+  </div>
+  <hr/>
+</div>
+
+
