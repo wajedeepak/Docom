@@ -1,0 +1,78 @@
+<div class="dialog-wrap">
+  <h2 mat-dialog-title>{{ editMode ? 'Edit Doctor' : 'Add Doctor' }}</h2>
+
+  <mat-dialog-content>
+    <form [formGroup]="form" class="form">
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="name" placeholder="e.g. Rajesh Sharma" />
+        @if (form.get('name')?.errors?.['required']) {
+          <mat-error>Name is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Specialization</mat-label>
+        <input matInput formControlName="specialization" placeholder="e.g. General Physician" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Queue URL Slug</mat-label>
+        <span matTextPrefix>docom.in/</span>
+        <input matInput formControlName="slug" placeholder="drsharma" />
+        @if (checkingSlug()) {
+          <mat-hint>Checking availability...</mat-hint>
+        } @else if (slugAvailable() === true) {
+          <mat-hint class="hint--available">Available</mat-hint>
+        } @else if (slugAvailable() === false) {
+          <mat-error>Slug is already taken</mat-error>
+        }
+        @if (form.get('slug')?.errors?.['pattern']) {
+          <mat-error>Lowercase letters, numbers and hyphens only</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Clinic Address <span class="optional-hint">(optional)</span></mat-label>
+        <input matInput formControlName="address" placeholder="e.g. 12, MG Road, Bengaluru" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Pincode <span class="optional-hint">(optional)</span></mat-label>
+        <input matInput formControlName="pincode" placeholder="e.g. 560001" maxlength="6" />
+        @if (form.get('pincode')?.errors?.['pattern']) {
+          <mat-error>Pincode must be exactly 6 digits</mat-error>
+        }
+      </mat-form-field>
+
+      @if (!editMode) {
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Login Email</mat-label>
+          <input matInput formControlName="email" type="email" placeholder="doctor@example.com" />
+          @if (form.get('email')?.errors?.['email']) {
+            <mat-error>Invalid email</mat-error>
+          }
+        </mat-form-field>
+      }
+
+      @if (editMode) {
+        <div class="toggle-row">
+          <span class="toggle-label">Account Active</span>
+          <mat-slide-toggle formControlName="isActive" color="primary" />
+        </div>
+      }
+
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button class="btn-submit"
+      [disabled]="!canSubmit"
+      (click)="submit()">
+      @if (loading()) { <mat-spinner diameter="18" /> }
+      @else { {{ editMode ? 'Save Changes' : 'Add Doctor' }} }
+    </button>
+  </mat-dialog-actions>
+</div>

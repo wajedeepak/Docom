@@ -1,0 +1,72 @@
+@use '@angular/material' as mat;
+
+// ─── Custom Docom Theme (Angular Material 17 / M2 API) ───────────────────────
+@include mat.core();
+
+$primary: mat.define-palette(mat.$blue-palette, 600);
+$accent:  mat.define-palette(mat.$green-palette, 600);
+$warn:    mat.define-palette(mat.$red-palette);
+
+$theme: mat.define-light-theme((
+  color: (primary: $primary, accent: $accent, warn: $warn),
+  typography: mat.define-typography-config(
+    $font-family: 'Inter, Segoe UI, sans-serif'
+  ),
+  density: 0
+));
+
+@include mat.all-component-themes($theme);
+
+// ─── Global Reset ─────────────────────────────────────────────────────────────
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f7f8fc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ─── Material Overrides ───────────────────────────────────────────────────────
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    border-radius: 10px;
+  }
+}
+
+.mat-mdc-raised-button,
+.mat-mdc-flat-button {
+  letter-spacing: normal !important;
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-shape: 10px;
+}
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 16px;
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

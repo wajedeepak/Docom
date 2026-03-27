@@ -1,0 +1,482 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f7f8fc;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.queue-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+// ─── Header ─────────────────────────────────────────────────────────────────
+.queue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  background: #1a73e8;
+  color: white;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.refresh-indicator {
+  opacity: 0.5;
+}
+
+// ─── State Center ────────────────────────────────────────────────────────────
+.state-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 40px 0;
+}
+
+.state-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+
+  mat-icon {
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+  }
+
+  &--off {
+    background: #e8f0fe;
+    color: #1a73e8;
+  }
+
+  &--pause {
+    background: #fff3e0;
+    color: #f57c00;
+  }
+}
+
+.state-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.state-sublabel {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+// ─── Doctor Card ─────────────────────────────────────────────────────────────
+.doctor-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+
+  &--compact {
+    margin-top: 0;
+    padding: 12px 16px;
+  }
+}
+
+.doctor-avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  color: white;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-transform: uppercase;
+
+  &--sm {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+.doctor-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.doctor-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.doctor-spec {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.session-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &--active {
+    background: #e6f4ea;
+    color: #1e8e3e;
+  }
+}
+
+.session-dot {
+  width: 6px;
+  height: 6px;
+  background: #1e8e3e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+// ─── Stats Row ───────────────────────────────────────────────────────────────
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &--highlight {
+    background: #1a73e8;
+
+    .stat-value, .stat-label {
+      color: white;
+    }
+  }
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// ─── Take Token Card ─────────────────────────────────────────────────────────
+.take-token-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.take-token-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.take-token-sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.name-field {
+  width: 100%;
+}
+
+.take-btn {
+  width: 100%;
+  height: 52px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px !important;
+  background: #1a73e8 !important;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &:disabled {
+    opacity: 0.7;
+  }
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.btn-spinner {
+  ::ng-deep circle {
+    stroke: white;
+  }
+}
+
+// ─── Token Taken ─────────────────────────────────────────────────────────────
+.token-taken-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.my-token-card {
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.my-token-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.my-token-number {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.my-token-name {
+  font-size: 15px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.status-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.status-item {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &--you {
+    background: #e6f4ea;
+  }
+}
+
+.status-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a2e;
+
+  &--go {
+    font-size: 13px;
+    color: #1e8e3e;
+  }
+
+  &--soon {
+    font-size: 13px;
+    color: #f57c00;
+    font-weight: 700;
+  }
+}
+
+.status-label {
+  font-size: 11px;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.token-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #f0f4ff;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #6b7280;
+
+  mat-icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #1a73e8;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+.queue-footer {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: auto;
+}
+
+// ─── Active queue layout ─────────────────────────────────────────────────────
+.queue-active {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+// ─── Notice banners (expired / grace warning) ────────────────────────────────
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &--expired {
+    background: #fce8e6;
+    color: #c62828;
+    mat-icon { color: #c62828; }
+  }
+
+  &--warning {
+    background: #fff8e1;
+    color: #5d4037;
+    mat-icon { color: #f57c00; }
+  }
+}
+
+.notice-title {
+  font-weight: 700;
+  margin: 0 0 2px;
+  font-size: 13px;
+}
+
+.notice-body {
+  margin: 0;
+  font-size: 13px;
+  color: inherit;
+}
+
+// ─── Grace token card variant ─────────────────────────────────────────────────
+.my-token-card--grace {
+  background: linear-gradient(135deg, #f57c00, #e65100) !important;
+}
+
+// ─── Grace status item ────────────────────────────────────────────────────────
+.status-item--warn { background: #fff8e1; }
+.status-value--warn { color: #f57c00; }
+
+// ─── Tracking link card ───────────────────────────────────────────────────────
+.tracking-link-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f0f7ff;
+  border: 1px solid #c7d8f8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+.tracking-icon { color: #1a73e8; flex-shrink: 0; }
+.tracking-content { flex: 1; min-width: 0; }
+.tracking-label { font-size: 11px; color: #6b7280; margin-bottom: 2px; }
+.tracking-url { font-size: 13px; color: #1a73e8; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tracking-copy { color: #6b7280; flex-shrink: 0; }

@@ -1,0 +1,233 @@
+<div class="dashboard">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">D</div>
+      <span class="brand-name">docom</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-item nav-item--active">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">{{ user()?.name?.[0] ?? 'D' }}</div>
+        <div class="user-details">
+          <p class="user-name">{{ user()?.name }}</p>
+          <p class="user-role">{{ user()?.role }}</p>
+        </div>
+      </div>
+      <button mat-icon-button (click)="logout()" matTooltip="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Loading -->
+    @if (loading()) {
+      <div class="main-loading">
+        <mat-spinner diameter="48" />
+      </div>
+    }
+
+    @if (!loading()) {
+
+      <!-- Top Bar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title">Queue Dashboard</h1>
+          @if (session()) {
+            <span class="session-label">{{ session()!.label }}</span>
+          }
+        </div>
+        <div class="topbar-right">
+          @if (!session() || session()?.status === 'Ended') {
+            <button mat-flat-button class="btn-primary" (click)="openNewSession()">
+              <mat-icon>add</mat-icon>
+              New Session
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- No Session -->
+      @if (!session() || session()?.status === 'Ended') {
+        <div class="empty-state">
+          <div class="empty-icon">
+            <mat-icon>queue</mat-icon>
+          </div>
+          <h2>No active session</h2>
+          <p>Start a new session to begin managing the queue.</p>
+          <button mat-flat-button class="btn-primary" (click)="openNewSession()">
+            <mat-icon>add</mat-icon>
+            Start New Session
+          </button>
+        </div>
+      }
+
+      @if (session() && session()?.status !== 'Ended') {
+
+        <!-- Session Status Banner -->
+        <div class="session-banner" [class]="'session-banner--' + session()!.status.toLowerCase()">
+          <div class="banner-status">
+            @if (session()!.status === 'Active') {
+              <span class="live-dot"></span>
+              Session Active
+            } @else if (session()!.status === 'Paused') {
+              <mat-icon>pause</mat-icon>
+              Session Paused
+            } @else {
+              <mat-icon>schedule</mat-icon>
+              Session Ready
+            }
+          </div>
+          <div class="banner-actions">
+            @if (canStart()) {
+              <button mat-flat-button class="btn-success"
+                [disabled]="actionLoading() !== null"
+                (click)="startSession()">
+                @if (actionLoading() === 'starting') { <mat-spinner diameter="16" /> }
+                @else { Start Session }
+              </button>
+            }
+            @if (canPause()) {
+              <button mat-stroked-button
+                [disabled]="actionLoading() !== null"
+                (click)="pauseSession()">
+                @if (actionLoading() === 'pausing') { <mat-spinner diameter="16" /> }
+                @else { Pause }
+              </button>
+            }
+            @if (canResume()) {
+              <button mat-flat-button class="btn-success"
+                [disabled]="actionLoading() !== null"
+                (click)="resumeSession()">
+                @if (actionLoading() === 'resuming') { <mat-spinner diameter="16" /> }
+                @else { Resume }
+              </button>
+            }
+            @if (canEnd()) {
+              <button mat-stroked-button class="btn-danger"
+                [disabled]="actionLoading() !== null"
+                (click)="endSession()">
+                @if (actionLoading() === 'ending') { <mat-spinner diameter="16" /> }
+                @else { End Session }
+              </button>
+            }
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <mat-icon class="stat-icon stat-icon--blue">confirmation_number</mat-icon>
+            <div class="stat-body">
+              <span class="stat-num">{{ currentToken() || '—' }}</span>
+              <span class="stat-label">Now Serving</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <mat-icon class="stat-icon stat-icon--orange">people</mat-icon>
+            <div class="stat-body">
+              <span class="stat-num">{{ waitingCount() }}</span>
+              <span class="stat-label">Waiting</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <mat-icon class="stat-icon stat-icon--green">confirmation_number</mat-icon>
+            <div class="stat-body">
+              <span class="stat-num">{{ queueState()?.lastIssuedTokenNumber ?? 0 }}</span>
+              <span class="stat-label">Tokens Issued</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <mat-icon class="stat-icon stat-icon--gray">schedule</mat-icon>
+            <div class="stat-body">
+              <span class="stat-num">~{{ (waitingCount() * 5) }}m</span>
+              <span class="stat-label">Est. Wait</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primary Actions -->
+        <div class="actions-row">
+          <button
+            mat-flat-button
+            class="action-btn action-btn--primary"
+            [disabled]="!canNext() || actionLoading() !== null"
+            (click)="nextPatient()">
+            @if (actionLoading() === 'next') { <mat-spinner diameter="20" /> }
+            @else {
+              <mat-icon>skip_next</mat-icon>
+              Next Patient
+            }
+          </button>
+
+          <button
+            mat-stroked-button
+            class="action-btn"
+            [disabled]="!canSkip() || actionLoading() !== null"
+            (click)="skipPatient()">
+            @if (actionLoading() === 'skip') { <mat-spinner diameter="20" /> }
+            @else {
+              <mat-icon>redo</mat-icon>
+              Skip
+            }
+          </button>
+
+          <button
+            mat-flat-button
+            class="action-btn action-btn--walkin"
+            [disabled]="!canWalkIn() || actionLoading() !== null"
+            (click)="addWalkIn()"
+            matTooltip="Add walk-in patient instantly">
+            @if (actionLoading() === 'walkin') { <mat-spinner diameter="20" /> }
+            @else {
+              <mat-icon>person_add</mat-icon>
+              Walk-in
+            }
+          </button>
+        </div>
+
+        <!-- Queue List -->
+        @if (queueState()?.queue?.length) {
+          <div class="queue-list-card">
+            <h3 class="queue-list-title">Queue</h3>
+            <div class="queue-list">
+              @for (token of queueState()!.queue; track token.id) {
+                <div class="queue-item" [class]="'queue-item--' + getStatusColor(token.status)">
+                  <div class="queue-num">{{ token.tokenNumber }}</div>
+                  <div class="queue-info">
+                    <span class="queue-name">{{ token.patientName || 'Patient' }}</span>
+                    @if (token.phoneNumber) {
+                      <span class="queue-phone">{{ token.phoneNumber }}</span>
+                    }
+                    <span class="queue-time">{{ token.createdAt | date:'h:mm a' }}</span>
+                  </div>
+                  <div class="queue-badge" [class]="'badge--' + getStatusColor(token.status)">
+                    {{ token.status }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        } @else if (session()?.status === 'Active') {
+          <div class="queue-empty">
+            <mat-icon>inbox</mat-icon>
+            <p>No patients in queue yet.</p>
+            <p class="queue-empty-sub">Share your page: <strong>docom.in/{{ user()?.doctorSlug }}</strong></p>
+          </div>
+        }
+
+      }
+    }
+  </main>
+</div>

@@ -1,0 +1,98 @@
+<div class="doctors-page">
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Doctors</h1>
+      <p class="page-sub">Manage doctor accounts and their queue URLs.</p>
+    </div>
+    <button mat-flat-button class="btn-primary" (click)="openAddDoctor()">
+      <mat-icon>add</mat-icon>
+      Add Doctor
+    </button>
+  </div>
+
+  <!-- Loading -->
+  @if (loading()) {
+    <div class="loading-center"><mat-spinner diameter="40" /></div>
+  }
+
+  <!-- Table -->
+  @if (!loading() && result()) {
+    <div class="table-card">
+      <table mat-table [dataSource]="result()!.items" class="doctors-table">
+
+        <!-- Slug -->
+        <ng-container matColumnDef="slug">
+          <th mat-header-cell *matHeaderCellDef>Queue URL</th>
+          <td mat-cell *matCellDef="let doc">
+            <a class="slug-link" [href]="'https://' + getDoctorUrl(doc.slug)" target="_blank">
+              docom.in/{{ doc.slug }}
+              <mat-icon class="link-icon">open_in_new</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+        <!-- Name -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Doctor</th>
+          <td mat-cell *matCellDef="let doc">
+            <div class="doctor-cell">
+              <div class="doc-avatar">{{ doc.name[0] }}</div>
+              <div>
+                <p class="doc-name">Dr. {{ doc.name }}</p>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Specialization -->
+        <ng-container matColumnDef="specialization">
+          <th mat-header-cell *matHeaderCellDef>Specialization</th>
+          <td mat-cell *matCellDef="let doc">{{ doc.specialization }}</td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let doc">
+            <span class="status-badge" [class]="doc.isActive ? 'status-badge--active' : 'status-badge--inactive'">
+              {{ doc.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Actions -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let doc">
+            <button mat-icon-button matTooltip="Edit doctor" (click)="openEditDoctor(doc)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button
+              [matTooltip]="doc.isActive ? 'Disable doctor' : 'Enable doctor'"
+              (click)="toggleActive(doc)">
+              <mat-icon>{{ doc.isActive ? 'toggle_on' : 'toggle_off' }}</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator
+        [length]="result()!.total"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[10, 20, 50]"
+        (page)="onPageChange($event)"
+        showFirstLastButtons />
+    </div>
+  }
+
+  @if (!loading() && result()?.items?.length === 0) {
+    <div class="empty-state">
+      <mat-icon>people_outline</mat-icon>
+      <p>No doctors yet. Add the first doctor.</p>
+    </div>
+  }
+</div>

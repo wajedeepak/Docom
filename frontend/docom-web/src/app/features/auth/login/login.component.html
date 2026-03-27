@@ -1,0 +1,361 @@
+<div class="login-page">
+  <div class="login-card">
+
+    <!-- Brand -->
+    <div class="login-brand">
+      <div class="brand-icon">D</div>
+      <span class="brand-text">docom</span>
+    </div>
+
+    <!-- Auth Mode Toggle (Email Step) -->
+    @if (step() === 'email') {
+      <div class="auth-mode-toggle">
+        <span class="toggle-label">Login with:</span>
+        <button 
+          mat-button 
+          type="button"
+          [class.active]="authMode() === 'otp'"
+          (click)="authMode() === 'password' && toggleAuthMode()">
+          OTP
+        </button>
+        <span class="toggle-divider">or</span>
+        <button 
+          mat-button 
+          type="button"
+          [class.active]="authMode() === 'password'"
+          (click)="authMode() === 'otp' && toggleAuthMode()">
+          Password
+        </button>
+      </div>
+    }
+
+    <h1 class="login-title">
+      @if (step() === 'email') { 
+        Sign in 
+      } @else if (step() === 'otp') { 
+        Verify code 
+      } @else if (step() === 'password' && authMode() === 'password') {
+        Enter password
+      } @else if (step() === 'forgot-email') {
+        Reset password
+      } @else if (step() === 'forgot-code') {
+        Enter reset code
+      } @else {
+        Set a password
+      }
+    </h1>
+    
+    <p class="login-sub">
+      @if (step() === 'email') {
+        @if (authMode() === 'otp') {
+          Enter your registered email to receive a login code.
+        } @else {
+          Enter your email and password to sign in.
+        }
+      } @else if (step() === 'otp') {
+        We sent a 6-digit code to <strong>{{ email }}</strong>
+      } @else if (step() === 'password' && authMode() === 'password') {
+        Enter your password to continue.
+      } @else if (step() === 'forgot-email') {
+        Enter your email to receive a reset code
+      } @else if (step() === 'forgot-code') {
+        Enter the reset code and your new password
+      } @else {
+        Set a strong password to secure your account.
+      }
+    </p>
+
+    <!-- Password Not Set Warning -->
+    @if (isPasswordSetRequired()) {
+      <div class="warning-banner">
+        <mat-icon>info</mat-icon>
+        <span>Please use OTP to set a password first, then you can use password login.</span>
+      </div>
+    }
+
+    <!-- Email Step -->
+    @if (step() === 'email') {
+      <form (ngSubmit)="onSubmit()" #emailForm="ngForm" class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email address</mat-label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            required
+            email
+            placeholder="doctor@example.com"
+            autocomplete="email" />
+          <mat-icon matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+
+        <!-- Password field (shown only in password mode) -->
+        @if (authMode() === 'password') {
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="showPassword() ? 'text' : 'password'"
+              name="password"
+              [(ngModel)]="password"
+              required
+              minlength="6"
+              placeholder="Min 6 characters"
+              autocomplete="current-password" />
+            <button 
+              mat-icon-button 
+              matSuffix 
+              type="button"
+              (click)="togglePasswordVis()"
+              class="password-toggle">
+              @if (showPassword()) {
+                <mat-icon>visibility_off</mat-icon>
+              } @else {
+                <mat-icon>visibility</mat-icon>
+              }
+            </button>
+          </mat-form-field>
+
+          <p class="password-hint">Minimum 6 characters</p>
+        }
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading() || (!email || (authMode() === 'password' && !password))">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="btn-spinner" />
+          } @else {
+            Continue
+          }
+        </button>
+
+        <!-- Forgot Password Link (Password Mode Only) -->
+        @if (authMode() === 'password' && !isResettingPassword()) {
+          <button 
+            mat-button 
+            type="button" 
+            class="forgot-password-btn"
+            (click)="startPasswordReset()">
+            <mat-icon>lock_reset</mat-icon>
+            Forgot password?
+          </button>
+        }
+      </form>
+    }
+
+    <!-- Forgot Password - Email Step -->
+    @if (step() === 'forgot-email') {
+      <div class="step-indicator">
+        <span class="step-label">Step 1 of 2</span>
+      </div>
+      <form (ngSubmit)="onSubmit()" #forgotEmailForm="ngForm" class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email address</mat-label>
+          <input
+            matInput
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            required
+            email
+            placeholder="doctor@example.com"
+            autocomplete="email" />
+          <mat-icon matSuffix>mail_outline</mat-icon>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading() || !forgotEmailForm.valid">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="btn-spinner" />
+          } @else {
+            Continue
+          }
+        </button>
+
+        <button mat-button type="button" class="back-btn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Back to login
+        </button>
+      </form>
+    }
+
+    <!-- Forgot Password - Reset Code & New Password Step -->
+    @if (step() === 'forgot-code') {
+      <div class="step-indicator">
+        <span class="step-label">Step 2 of 2</span>
+      </div>
+      <form (ngSubmit)="onSubmit()" #forgotCodeForm="ngForm" class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>6-digit reset code</mat-label>
+          <input
+            matInput
+            type="text"
+            name="resetCode"
+            [(ngModel)]="resetCode"
+            required
+            minlength="6"
+            maxlength="6"
+            inputmode="numeric"
+            placeholder="000000"
+            autocomplete="off" />
+          <mat-icon matSuffix>lock_outline</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>New password</mat-label>
+          <input
+            matInput
+            [type]="showPassword() ? 'text' : 'password'"
+            name="password"
+            [(ngModel)]="password"
+            required
+            minlength="6"
+            placeholder="Min 6 characters"
+            autocomplete="new-password" />
+          <button 
+            mat-icon-button 
+            matSuffix 
+            type="button"
+            (click)="togglePasswordVis()"
+            class="password-toggle">
+            @if (showPassword()) {
+              <mat-icon>visibility_off</mat-icon>
+            } @else {
+              <mat-icon>visibility</mat-icon>
+            }
+          </button>
+        </mat-form-field>
+
+        <p class="password-hint">Minimum 6 characters</p>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading() || !resetCode || !password || resetCode.length !== 6 || password.length < 6">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="btn-spinner" />
+          } @else {
+            Reset password
+          }
+        </button>
+
+        <button mat-button type="button" class="back-btn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Go back
+        </button>
+      </form>
+    }
+
+    <!-- OTP Verification Step (OTP Mode) -->
+    @if (step() === 'otp' && authMode() === 'otp') {
+      <form (ngSubmit)="onSubmit()" #otpForm="ngForm" class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>6-digit code</mat-label>
+          <input
+            matInput
+            type="text"
+            name="otp"
+            [(ngModel)]="otp"
+            required
+            minlength="6"
+            maxlength="6"
+            inputmode="numeric"
+            placeholder="000000"
+            autocomplete="one-time-code" />
+          <mat-icon matSuffix>lock_outline</mat-icon>
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading() || !otpForm.valid">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="btn-spinner" />
+          } @else {
+            Sign in
+          }
+        </button>
+
+        <button mat-button type="button" class="back-btn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          Use different email
+        </button>
+      </form>
+    }
+
+    <!-- Password Step (After OTP verification or Password Login) -->
+    @if (step() === 'password') {
+      <form (ngSubmit)="onSubmit()" #passwordForm="ngForm" class="login-form">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>
+            @if (authMode() === 'otp') {
+              Create password
+            } @else {
+              Password
+            }
+          </mat-label>
+          <input
+            matInput
+            [type]="showPassword() ? 'text' : 'password'"
+            name="password"
+            [(ngModel)]="password"
+            required
+            minlength="6"
+            placeholder="Min 6 characters"
+            [autocomplete]="authMode() === 'otp' ? 'new-password' : 'current-password'" />
+          <button 
+            mat-icon-button 
+            matSuffix 
+            type="button"
+            (click)="togglePasswordVis()"
+            class="password-toggle">
+            @if (showPassword()) {
+              <mat-icon>visibility_off</mat-icon>
+            } @else {
+              <mat-icon>visibility</mat-icon>
+            }
+          </button>
+        </mat-form-field>
+
+        <p class="password-hint">Minimum 6 characters</p>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="login-btn"
+          [disabled]="loading() || !password || password.length < 6">
+          @if (loading()) {
+            <mat-spinner diameter="20" class="btn-spinner" />
+          } @else {
+            @if (authMode() === 'otp') {
+              Set Password
+            } @else {
+              Sign in
+            }
+          }
+        </button>
+
+        <button mat-button type="button" class="back-btn" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+          @if (authMode() === 'otp') {
+            Go back
+          } @else {
+            Use different email
+          }
+        </button>
+      </form>
+    }
+
+  </div>
+
+  <p class="login-footer">Docom &mdash; Clinic Queue Management</p>
+</div>
+

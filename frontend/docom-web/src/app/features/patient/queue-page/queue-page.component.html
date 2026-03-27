@@ -1,0 +1,251 @@
+<div class="queue-page">
+  <!-- Header -->
+  <header class="queue-header">
+    <div class="brand">
+      <span class="brand-logo">D</span>
+      <span class="brand-name">docom</span>
+    </div>
+    @if (isRefreshing()) {
+      <div class="refresh-indicator">
+        <mat-spinner diameter="16" />
+      </div>
+    }
+  </header>
+
+  <!-- Loading -->
+  @if (pageState() === 'loading') {
+    <div class="state-center">
+      <mat-spinner diameter="48" />
+      <p class="state-label">Loading queue...</p>
+    </div>
+  }
+
+  <!-- No Session -->
+  @if (pageState() === 'no-session') {
+    <div class="state-center">
+      <div class="state-icon state-icon--off">
+        <mat-icon>schedule</mat-icon>
+      </div>
+      @if (queueState(); as q) {
+        <h2 class="doctor-name">Dr. {{ q.doctorName }}</h2>
+        <p class="doctor-spec">{{ q.specialization }}</p>
+      }
+      <p class="state-label">No session is active right now.</p>
+      <p class="state-sublabel">The doctor will start a session when they're available.</p>
+    </div>
+  }
+
+  <!-- Paused -->
+  @if (pageState() === 'paused') {
+    <div class="state-center">
+      <div class="state-icon state-icon--pause">
+        <mat-icon>pause_circle</mat-icon>
+      </div>
+      @if (queueState(); as q) {
+        <h2 class="doctor-name">Dr. {{ q.doctorName }}</h2>
+        <p class="doctor-spec">{{ q.specialization }}</p>
+      }
+      <p class="state-label">Session is paused</p>
+      <p class="state-sublabel">The doctor will resume shortly. Please wait.</p>
+    </div>
+  }
+
+  <!-- Active: Take Token -->
+  @if (pageState() === 'active') {
+    @if (queueState(); as q) {
+      <div class="queue-active">
+
+        <!-- Doctor info -->
+        <div class="doctor-card">
+          <div class="doctor-avatar">{{ q.doctorName[0] }}</div>
+          <div class="doctor-info">
+            <h1 class="doctor-name">Dr. {{ q.doctorName }}</h1>
+            <p class="doctor-spec">{{ q.specialization }}</p>
+          </div>
+          <div class="session-badge session-badge--active">
+            <span class="session-dot"></span>Live
+          </div>
+        </div>
+
+        <!-- Live Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-value">{{ q.currentTokenNumber || '—' }}</span>
+            <span class="stat-label">Now Serving</span>
+          </div>
+          <div class="stat-card stat-card--highlight">
+            <span class="stat-value">{{ q.waitingCount }}</span>
+            <span class="stat-label">In Queue</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">{{ waitLabel }}</span>
+            <span class="stat-label">Est. Wait</span>
+          </div>
+        </div>
+
+        <!-- Expired token notice -->
+        @if (expiredMessage()) {
+          <div class="notice notice--expired">
+            <mat-icon>info_outline</mat-icon>
+            <span>{{ expiredMessage() }}</span>
+          </div>
+        }
+
+        <!-- Take Token -->
+        <div class="take-token-card">
+          <h2 class="take-token-title">Get your token</h2>
+          <p class="take-token-sub">You'll receive a number. Come when your turn is near.</p>
+
+          <mat-form-field appearance="outline" class="name-field">
+            <mat-label>Your name (optional)</mat-label>
+            <input matInput [(ngModel)]="patientName" placeholder="e.g. Ramesh Kumar" maxlength="100" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="name-field">
+            <mat-label>Phone number (optional)</mat-label>
+            <input matInput [(ngModel)]="patientPhone" placeholder="e.g. 9876543210" maxlength="15" type="tel" />
+          </mat-form-field>
+
+          <button
+            mat-flat-button
+            class="take-btn"
+            [disabled]="isTakingToken()"
+            (click)="takeToken()">
+            @if (isTakingToken()) {
+              <mat-spinner diameter="20" class="btn-spinner" />
+            } @else {
+              <mat-icon>confirmation_number</mat-icon>
+              Take Token
+            }
+          </button>
+        </div>
+
+      </div>
+    }
+  }
+
+  <!-- Token Taken (normal) -->
+  @if (pageState() === 'token-taken') {
+    @if (myToken(); as t) {
+      <div class="token-taken-page">
+        @if (queueState(); as q) {
+          <div class="doctor-card doctor-card--compact">
+            <div class="doctor-avatar doctor-avatar--sm">{{ q.doctorName[0] }}</div>
+            <div class="doctor-info">
+              <span class="doctor-name">Dr. {{ q.doctorName }}</span>
+              <span class="doctor-spec">{{ q.specialization }}</span>
+            </div>
+          </div>
+        }
+
+        <div class="my-token-card">
+          <p class="my-token-label">Your Token</p>
+          <div class="my-token-number">{{ t.tokenNumber }}</div>
+          @if (patientName) {
+            <p class="my-token-name">{{ patientName }}</p>
+          }
+        </div>
+
+        @if (trackingUrl()) {
+          <div class="tracking-link-card">
+            <mat-icon class="tracking-icon">link</mat-icon>
+            <div class="tracking-content">
+              <p class="tracking-label">Your tracking link</p>
+              <p class="tracking-url">{{ trackingUrl() }}</p>
+            </div>
+            <button mat-icon-button class="tracking-copy" (click)="copyTrackingUrl()" matTooltip="Copy link">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+        }
+
+        <div class="status-row">
+          <div class="status-item">
+            <span class="status-value">{{ queueState()?.currentTokenNumber || '—' }}</span>
+            <span class="status-label">Now Serving</span>
+          </div>
+          @if (myPosition() !== null) {
+            <div class="status-item status-item--you">
+              @if (myPosition()! <= 0) {
+                <span class="status-value status-value--go">Your turn!</span>
+              } @else if (myPosition()! === 1) {
+                <span class="status-value status-value--soon">Next up!</span>
+              } @else {
+                <span class="status-value">{{ myPosition() }} ahead</span>
+              }
+              <span class="status-label">Your position</span>
+            </div>
+          }
+          <div class="status-item">
+            <span class="status-value">{{ waitLabel }}</span>
+            <span class="status-label">Est. Wait</span>
+          </div>
+        </div>
+
+        <div class="token-hint">
+          <mat-icon>info_outline</mat-icon>
+          <span>This page updates automatically. You can close it and come back.</span>
+        </div>
+      </div>
+    }
+  }
+
+  <!-- Token Grace Window -->
+  @if (pageState() === 'token-grace') {
+    @if (myToken(); as t) {
+      <div class="token-taken-page">
+        @if (queueState(); as q) {
+          <div class="doctor-card doctor-card--compact">
+            <div class="doctor-avatar doctor-avatar--sm">{{ q.doctorName[0] }}</div>
+            <div class="doctor-info">
+              <span class="doctor-name">Dr. {{ q.doctorName }}</span>
+              <span class="doctor-spec">{{ q.specialization }}</span>
+            </div>
+          </div>
+        }
+
+        <div class="my-token-card my-token-card--grace">
+          <p class="my-token-label">Your Token</p>
+          <div class="my-token-number">{{ t.tokenNumber }}</div>
+        </div>
+
+        <div class="notice notice--warning">
+          <mat-icon>warning_amber</mat-icon>
+          <div>
+            <p class="notice-title">Your turn may have passed</p>
+            <p class="notice-body">
+              Current token is <strong>{{ queueState()?.currentTokenNumber }}</strong>,
+              your token is <strong>{{ t.tokenNumber }}</strong>.
+              Please check with the clinic.
+            </p>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-item">
+            <span class="status-value">{{ queueState()?.currentTokenNumber || '—' }}</span>
+            <span class="status-label">Now Serving</span>
+          </div>
+          <div class="status-item status-item--warn">
+            <span class="status-value status-value--warn">{{ t.tokenNumber }}</span>
+            <span class="status-label">Your Token</span>
+          </div>
+          <div class="status-item">
+            <span class="status-value">{{ waitLabel }}</span>
+            <span class="status-label">Est. Wait</span>
+          </div>
+        </div>
+
+        <div class="token-hint">
+          <mat-icon>info_outline</mat-icon>
+          <span>This page updates every 15 seconds.</span>
+        </div>
+      </div>
+    }
+  }
+
+  <!-- Footer -->
+  <footer class="queue-footer">
+    <span>Powered by <strong>docom.in</strong></span>
+  </footer>
+</div>

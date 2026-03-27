@@ -1,0 +1,274 @@
+<!-- ─── NAV ──────────────────────────────────────────────────────────────── -->
+<nav class="nav" [class.nav--scrolled]="scrolled()">
+  <div class="nav-inner">
+    <a class="nav-brand" routerLink="/">
+      <span class="nav-logo">D</span>
+      <span class="nav-name">docom</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li><button class="nav-link" (click)="scrollTo('features')">Features</button></li>
+      <li><button class="nav-link" (click)="scrollTo('how-it-works')">How It Works</button></li>
+      <li>
+        <button mat-flat-button class="nav-cta" routerLink="/login">Login</button>
+      </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button class="hamburger" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()">
+      <mat-icon>{{ menuOpen() ? 'close' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (menuOpen()) {
+    <div class="mobile-menu">
+      <button class="mobile-link" (click)="scrollTo('features')">Features</button>
+      <button class="mobile-link" (click)="scrollTo('how-it-works')">How It Works</button>
+      <button mat-flat-button class="nav-cta mobile-cta" routerLink="/login" (click)="closeMenu()">Login</button>
+    </div>
+  }
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Queue management for clinics</div>
+    <h1 class="hero-headline">
+      Smart Queue Management<br class="hero-br" /> for Clinics
+    </h1>
+    <p class="hero-sub">
+      Let patients take tokens from their phone<br />
+      and arrive only when their turn is near.
+    </p>
+    <div class="hero-actions">
+      <button mat-flat-button class="btn-primary btn-lg" routerLink="/login">
+        <mat-icon>login</mat-icon>
+        Doctor Login
+      </button>
+      <button mat-stroked-button class="btn-outline btn-lg" (click)="scrollTo('how-it-works')">
+        See How It Works
+        <mat-icon>arrow_downward</mat-icon>
+      </button>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="hero-visual">
+      <div class="hero-mockup">
+        <div class="mockup-header">
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span class="mockup-dot"></span>
+          <span class="mockup-url">docom.in/drsharma</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-badge">● Live</div>
+          <div class="mockup-doc">
+            <div class="mockup-avatar">R</div>
+            <div>
+              <div class="mockup-doc-name">Dr. Rajesh Sharma</div>
+              <div class="mockup-doc-spec">General Physician</div>
+            </div>
+          </div>
+          <div class="mockup-stats">
+            <div class="mockup-stat">
+              <div class="mockup-stat-val">12</div>
+              <div class="mockup-stat-lbl">Now Serving</div>
+            </div>
+            <div class="mockup-stat mockup-stat--hi">
+              <div class="mockup-stat-val">8</div>
+              <div class="mockup-stat-lbl">In Queue</div>
+            </div>
+            <div class="mockup-stat">
+              <div class="mockup-stat-val">~40 min</div>
+              <div class="mockup-stat-lbl">Est. Wait</div>
+            </div>
+          </div>
+          <div class="mockup-token-card">
+            <div class="mockup-token-label">Your Token</div>
+            <div class="mockup-token-num">17</div>
+            <div class="mockup-token-pos">5 ahead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS / CLIENT COUNT ─────────────────────────────────────────────── -->
+<section class="stats-section">
+  <div class="stats-inner">
+    @for (s of stats; track s.label) {
+      <div class="stat-item">
+        <mat-icon class="stat-icon">{{ s.icon }}</mat-icon>
+        <div class="stat-value">{{ s.value }}</div>
+        <div class="stat-label">{{ s.label }}</div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ─── PROBLEM ───────────────────────────────────────────────────────────── -->
+<section class="section section--gray" id="features">
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Clinic waiting rooms are often chaotic</h2>
+    <p class="section-sub">Most clinics still rely on paper tokens, shout-outs, and guesswork.</p>
+    <div class="cards-grid cards-grid--3">
+      @for (p of problems; track p.title) {
+        <div class="problem-card">
+          <div class="problem-icon">
+            <mat-icon>{{ p.icon }}</mat-icon>
+          </div>
+          <h3 class="problem-title">{{ p.title }}</h3>
+          <p class="problem-body">{{ p.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTION / HOW IT WORKS ──────────────────────────────────────────── -->
+<section class="section" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Docom simplifies clinic queues</h2>
+    <p class="section-sub">Up and running in under a minute. No special hardware required.</p>
+    <div class="steps-grid">
+      @for (s of steps; track s.num) {
+        <div class="step-card">
+          <div class="step-num">{{ s.num }}</div>
+          <div class="step-icon-wrap">
+            <mat-icon class="step-icon">{{ s.icon }}</mat-icon>
+          </div>
+          <h3 class="step-title">{{ s.title }}</h3>
+          <p class="step-body">{{ s.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ─────────────────────────────────────────────────────────── -->
+<section class="section section--gray">
+  <div class="section-inner">
+    <div class="section-label">Why Docom</div>
+    <h2 class="section-title">Built for busy clinics</h2>
+    <p class="section-sub">Everything you need. Nothing you don't.</p>
+    <div class="cards-grid cards-grid--3">
+      @for (b of benefits; track b.title) {
+        <div class="benefit-card">
+          <div class="benefit-icon-wrap">
+            <mat-icon class="benefit-icon">{{ b.icon }}</mat-icon>
+          </div>
+          <h3 class="benefit-title">{{ b.title }}</h3>
+          <p class="benefit-body">{{ b.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ─── SCREENSHOTS ──────────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">The Product</div>
+    <h2 class="section-title">Two views. One seamless flow.</h2>
+    <p class="section-sub">Doctors manage. Patients track. Both in real time.</p>
+
+    <div class="screens-grid">
+      <!-- Patient screen mockup -->
+      <div class="screen-card">
+        <div class="screen-label">Patient Queue View</div>
+        <div class="screen-mock screen-mock--patient">
+          <div class="sm-header">
+            <span class="sm-brand">D docom</span>
+            <span class="sm-live">● Live</span>
+          </div>
+          <div class="sm-doc-row">
+            <div class="sm-avatar">S</div>
+            <div>
+              <div class="sm-doc-name">Dr. Sharma</div>
+              <div class="sm-doc-spec">General Physician</div>
+            </div>
+          </div>
+          <div class="sm-stats">
+            <div class="sm-stat"><span class="sm-val">14</span><span class="sm-lbl">Serving</span></div>
+            <div class="sm-stat sm-stat--hi"><span class="sm-val">6</span><span class="sm-lbl">In Queue</span></div>
+            <div class="sm-stat"><span class="sm-val">~30m</span><span class="sm-lbl">Wait</span></div>
+          </div>
+          <div class="sm-token">
+            <div class="sm-token-lbl">Your Token</div>
+            <div class="sm-token-num">18</div>
+            <div class="sm-token-pos">Next up!</div>
+          </div>
+        </div>
+        <p class="screen-caption">No app install. Any browser. Any phone.</p>
+      </div>
+
+      <!-- Doctor dashboard mockup -->
+      <div class="screen-card">
+        <div class="screen-label">Doctor Dashboard</div>
+        <div class="screen-mock screen-mock--doctor">
+          <div class="dm-header">
+            <span class="dm-title">Morning Session</span>
+            <span class="dm-badge">Active</span>
+          </div>
+          <div class="dm-current">
+            <div class="dm-cur-lbl">Now Serving</div>
+            <div class="dm-cur-num">14</div>
+          </div>
+          <div class="dm-actions">
+            <div class="dm-btn dm-btn--primary">Next Patient</div>
+            <div class="dm-btn">Skip</div>
+            <div class="dm-btn">Walk-in</div>
+          </div>
+          <div class="dm-list">
+            <div class="dm-row dm-row--current">
+              <span class="dm-tok">14</span><span class="dm-name">Ramesh Kumar</span><span class="dm-status dm-s--serving">Serving</span>
+            </div>
+            <div class="dm-row">
+              <span class="dm-tok">15</span><span class="dm-name">Anita Nair</span><span class="dm-status dm-s--waiting">Waiting</span>
+            </div>
+            <div class="dm-row">
+              <span class="dm-tok">16</span><span class="dm-name">—</span><span class="dm-status dm-s--waiting">Waiting</span>
+            </div>
+          </div>
+        </div>
+        <p class="screen-caption">Full control from any device. No setup needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ──────────────────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">Start managing your clinic queue smarter</h2>
+    <p class="cta-sub">Free to use. No hardware. No app store. Just a link.</p>
+    <button mat-flat-button class="btn-primary btn-lg cta-btn" routerLink="/login">
+      <mat-icon>login</mat-icon>
+      Doctor Login
+    </button>
+  </div>
+</section>
+
+<!-- ─── FOOTER ───────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">D</span>
+      <div>
+        <div class="footer-name">docom</div>
+        <div class="footer-tagline">Smart queue management for clinics</div>
+      </div>
+    </div>
+    <nav class="footer-links">
+      <a routerLink="/login">Login</a>
+      <a href="mailto:hello@docom.in">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+  </div>
+  <div class="footer-copy">© {{ year }} Docom. All rights reserved.</div>
+</footer>

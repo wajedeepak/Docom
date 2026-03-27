@@ -1,0 +1,74 @@
+<div class="wrap">
+
+  <!-- ── FORM PHASE ─────────────────────────────────────────────────────── -->
+  @if (phase() === 'form' || phase() === 'loading') {
+    <h2 mat-dialog-title>Add Walk-in Patient</h2>
+
+    <mat-dialog-content>
+      <p class="hint">Both fields are optional. You can add anonymously.</p>
+
+      @if (errMsg()) {
+        <p class="err-msg">{{ errMsg() }}</p>
+      }
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Patient name (optional)</mat-label>
+        <input matInput [(ngModel)]="patientName" placeholder="e.g. Ramesh Kumar"
+               maxlength="100" [disabled]="phase() === 'loading'" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone number (optional)</mat-label>
+        <input matInput [(ngModel)]="phoneNumber" placeholder="e.g. 9876543210"
+               maxlength="15" type="tel" [disabled]="phase() === 'loading'" />
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button [disabled]="phase() === 'loading'" (click)="close()">Cancel</button>
+      <button mat-flat-button class="btn-add"
+              [disabled]="phase() === 'loading'"
+              (click)="add()">
+        @if (phase() === 'loading') {
+          <mat-spinner diameter="18" color="accent" />
+        } @else {
+          <mat-icon>person_add</mat-icon>
+        }
+        Add Walk-in
+      </button>
+    </mat-dialog-actions>
+  }
+
+  <!-- ── SUCCESS PHASE ──────────────────────────────────────────────────── -->
+  @if (phase() === 'success') {
+    <h2 mat-dialog-title>Token Added</h2>
+
+    <mat-dialog-content class="success-content">
+      <div class="token-badge">
+        <span class="token-label">Token</span>
+        <span class="token-number">#{{ result()!.tokenNumber }}</span>
+        @if (patientName) {
+          <span class="patient-label">{{ patientName }}</span>
+        }
+      </div>
+
+      <p class="tracking-label">Tracking link</p>
+      <div class="url-row">
+        <span class="url-text">{{ trackingUrl }}</span>
+        <button mat-icon-button matTooltip="Copy link" (click)="copyUrl()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </div>
+
+      <div class="qr-wrap">
+        <img [src]="qrUrl" alt="QR code for token tracking" width="180" height="180" />
+        <p class="qr-hint">Patient can scan to track their token</p>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-flat-button class="btn-add" (click)="close()">Done</button>
+    </mat-dialog-actions>
+  }
+
+</div>

@@ -1,0 +1,11 @@
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\bin\Release\net8.0\Docom.Domain.deps.json
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\bin\Release\net8.0\Docom.Domain.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\bin\Release\net8.0\Docom.Domain.pdb
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.AssemblyInfoInputs.cache
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.AssemblyInfo.cs
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.csproj.CoreCompileInputs.cache
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\refint\Docom.Domain.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.pdb
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\ref\Docom.Domain.dll

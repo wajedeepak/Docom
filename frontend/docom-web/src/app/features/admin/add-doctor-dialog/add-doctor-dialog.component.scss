@@ -1,0 +1,23 @@
+.dialog-wrap { padding: 8px; }
+.form { display: flex; flex-direction: column; gap: 4px; padding-top: 8px; }
+.full-width { width: 100%; }
+.hint--available { color: #1e8e3e !important; }
+.btn-submit { background: #1a73e8 !important; color: white !important; border-radius: 8px !important; min-width: 110px; }
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.optional-hint { font-size: 11px; color: #9ca3af; font-weight: 400; }
+
+.toggle-label {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
