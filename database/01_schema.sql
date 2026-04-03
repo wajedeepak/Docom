@@ -166,15 +166,15 @@ GO
 DECLARE @AdminId INT = SCOPE_IDENTITY();
 
 INSERT INTO Users (Email, Name, Role, IsActive)
-VALUES ('drtest@docom.in', 'Dr Test', 1, 1);
+VALUES ('drdemo@docom.in', 'Dr Demo', 1, 1);
 
 DECLARE @DoctorUserId INT = SCOPE_IDENTITY();
 
 INSERT INTO Doctors (Slug, Name, Specialization, UserId, IsActive)
-VALUES ('drtest' 'Test', 'General Physician', @DoctorUserId, 1);
+VALUES ('drdemo' 'Test', 'General Physician', @DoctorUserId, 1);
 GO
 
 PRINT 'Schema created successfully.';
 PRINT 'Admin login email: wajedeepak@gmail.com';
-PRINT 'Test doctor URL: docom.in/drtest';
+PRINT 'Test doctor URL: docom.in/drdemo';
 GO

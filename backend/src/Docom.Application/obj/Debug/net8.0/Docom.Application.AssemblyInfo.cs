@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Docom.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8d042955c01c7027d63e7d68c603b3935ad868b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Docom.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Docom.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

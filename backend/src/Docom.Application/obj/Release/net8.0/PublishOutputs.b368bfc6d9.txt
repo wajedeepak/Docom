@@ -1,0 +1,12 @@
+C:\Deepak\Workspace\Docom\backend\publish\Docom.Application.dll
+C:\Deepak\Workspace\Docom\backend\publish\Docom.Application.deps.json
+C:\Deepak\Workspace\Docom\backend\publish\Docom.Application.pdb
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.Extensions.Primitives.dll
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.IdentityModel.Abstractions.dll
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.IdentityModel.Logging.dll
+C:\Deepak\Workspace\Docom\backend\publish\Microsoft.IdentityModel.Tokens.dll
+C:\Deepak\Workspace\Docom\backend\publish\System.IdentityModel.Tokens.Jwt.dll
+C:\Deepak\Workspace\Docom\backend\publish\Docom.Domain.dll
+C:\Deepak\Workspace\Docom\backend\publish\Docom.Domain.pdb

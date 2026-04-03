@@ -13,3 +13,4 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.Application\obj\Debug\net8.0\Docom.A
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Application\obj\Debug\net8.0\refint\Docom.Application.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Application\obj\Debug\net8.0\Docom.Application.pdb
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Application\obj\Debug\net8.0\ref\Docom.Application.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.Application\obj\Debug\net8.0\Docom.Application.sourcelink.json

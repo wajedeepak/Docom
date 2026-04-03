@@ -10,38 +10,46 @@ GO
 -- =============================================================================
 -- DISABLE FOREIGN KEY CONSTRAINTS TEMPORARILY
 -- =============================================================================
-EXEC sp_MSForEachTable 'ALTER TABLE ? DISABLE TRIGGER ALL';
+ALTER TABLE Tokens NOCHECK CONSTRAINT ALL;
+ALTER TABLE Sessions NOCHECK CONSTRAINT ALL;
+ALTER TABLE Doctors NOCHECK CONSTRAINT ALL;
+ALTER TABLE OtpRequests NOCHECK CONSTRAINT ALL;
+ALTER TABLE Users NOCHECK CONSTRAINT ALL;
 GO
 
 -- =============================================================================
--- TRUNCATE ALL TABLES (fastest way to clear data while keeping schema)
+-- DELETE ALL ROWS (DELETE works with constraints disabled)
 -- =============================================================================
--- Tables with foreign key dependencies must be truncated in correct order
+-- Delete in reverse order of foreign key dependencies
 
--- Tokens must be deleted first (references Sessions)
-TRUNCATE TABLE Tokens;
+-- Tokens references Sessions
+DELETE FROM Tokens;
 GO
 
--- Sessions must be deleted next (references Doctors)
-TRUNCATE TABLE Sessions;
+-- Sessions references Doctors
+DELETE FROM Sessions;
 GO
 
--- Doctors must be deleted next (references Users)
-TRUNCATE TABLE Doctors;
+-- Doctors references Users
+DELETE FROM Doctors;
 GO
 
--- OtpRequests has no foreign keys
-TRUNCATE TABLE OtpRequests;
+-- OtpRequests has no dependencies
+DELETE FROM OtpRequests;
 GO
 
--- Users is last (no dependencies)
-TRUNCATE TABLE Users;
+-- Users is last
+DELETE FROM Users;
 GO
 
 -- =============================================================================
 -- RE-ENABLE FOREIGN KEY CONSTRAINTS
 -- =============================================================================
-EXEC sp_MSForEachTable 'ALTER TABLE ? ENABLE TRIGGER ALL';
+ALTER TABLE Tokens WITH CHECK CHECK CONSTRAINT ALL;
+ALTER TABLE Sessions WITH CHECK CHECK CONSTRAINT ALL;
+ALTER TABLE Doctors WITH CHECK CHECK CONSTRAINT ALL;
+ALTER TABLE OtpRequests WITH CHECK CHECK CONSTRAINT ALL;
+ALTER TABLE Users WITH CHECK CHECK CONSTRAINT ALL;
 GO
 
 -- =============================================================================

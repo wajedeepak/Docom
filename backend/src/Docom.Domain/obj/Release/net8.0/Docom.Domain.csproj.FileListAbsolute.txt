@@ -9,3 +9,4 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Doma
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\refint\Docom.Domain.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.pdb
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.Domain\obj\Release\net8.0\ref\Docom.Domain.dll
+C:\Deepak\Workspace\Docom\backend\src\Docom.Domain\obj\Release\net8.0\Docom.Domain.sourcelink.json

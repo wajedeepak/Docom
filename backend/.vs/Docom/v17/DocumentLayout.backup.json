@@ -1,42 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Deepak\\Workspace\\DOCOM\\backend\\",
+  "WorkspaceRootPath": "C:\\Deepak\\Workspace\\Docom\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|solutionrelative:src\\docom.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.infrastructure\\services\\devotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|solutionrelative:src\\docom.infrastructure\\services\\devotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.infrastructure\\services\\devotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|solutionrelative:src\\docom.infrastructure\\services\\devotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.infrastructure\\services\\emailotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|solutionrelative:src\\docom.infrastructure\\services\\emailotpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.infrastructure\\repositories\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C3D4E5F6-A7B8-9012-CDEF-123456789012}|src\\Docom.Infrastructure\\Docom.Infrastructure.csproj|solutionrelative:src\\docom.infrastructure\\repositories\\tokenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\wajed\\AppData\\Local\\SourceServer\\eeee4613f74f27ada6b9a81e94af50d3e9bfad5a390745fa9b1c4a3e32d0e199\\backend\\src\\Docom.API\\Controllers\\AuthController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.application\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|solutionrelative:src\\docom.application\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|solutionrelative:src\\docom.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.application\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,10 +50,6 @@
       "RelativeMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|src\\Docom.Application\\Docom.Application.csproj|solutionrelative:src\\docom.application\\services\\sessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|c:\\deepak\\workspace\\docom\\backend\\src\\docom.api\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4E5F6A7-B8C9-0123-DEF0-234567890123}|src\\Docom.API\\Docom.API.csproj|solutionrelative:src\\docom.api\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -66,105 +61,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "DevOtpService.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
+              "RelativeDocumentMoniker": "src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
+              "RelativeToolTip": "src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T09:22:31.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "src\\Docom.API\\Middleware\\ExceptionMiddleware.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "src\\Docom.API\\Middleware\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T10:22:56.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\wajed\\AppData\\Local\\SourceServer\\eeee4613f74f27ada6b9a81e94af50d3e9bfad5a390745fa9b1c4a3e32d0e199\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\Users\\wajed\\AppData\\Local\\SourceServer\\eeee4613f74f27ada6b9a81e94af50d3e9bfad5a390745fa9b1c4a3e32d0e199\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\wajed\\AppData\\Local\\SourceServer\\eeee4613f74f27ada6b9a81e94af50d3e9bfad5a390745fa9b1c4a3e32d0e199\\backend\\src\\Docom.API\\Controllers\\AuthController.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\Users\\wajed\\AppData\\Local\\SourceServer\\eeee4613f74f27ada6b9a81e94af50d3e9bfad5a390745fa9b1c4a3e32d0e199\\backend\\src\\Docom.API\\Controllers\\AuthController.cs [Read Only]",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAswG8AAAAMAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T09:35:25.917Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "src\\Docom.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAkwDEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T09:28:09.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "src\\Docom.Application\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "src\\Docom.Application\\Services\\AuthService.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAkwNMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T09:29:17.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "EmailOtpService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
               "RelativeDocumentMoniker": "src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
               "RelativeToolTip": "src\\Docom.Infrastructure\\Services\\EmailOtpService.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowDkAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-17T14:12:36.647Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DevOtpService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
-              "RelativeDocumentMoniker": "src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
-              "RelativeToolTip": "src\\Docom.Infrastructure\\Services\\DevOtpService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:12:21.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DoctorService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\DoctorService.cs",
-              "RelativeDocumentMoniker": "src\\Docom.Application\\Services\\DoctorService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\DoctorService.cs",
-              "RelativeToolTip": "src\\Docom.Application\\Services\\DoctorService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T12:37:45.737Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "src\\Docom.Application\\Services\\AuthService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\AuthService.cs",
-              "RelativeToolTip": "src\\Docom.Application\\Services\\AuthService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAswC8AAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T12:07:57.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "src\\Docom.API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAIwBYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T12:05:35.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "src\\Docom.API\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T12:00:09.156Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TokenRepository.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Repositories\\TokenRepository.cs",
-              "RelativeDocumentMoniker": "src\\Docom.Infrastructure\\Repositories\\TokenRepository.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Infrastructure\\Repositories\\TokenRepository.cs",
-              "RelativeToolTip": "src\\Docom.Infrastructure\\Repositories\\TokenRepository.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAowEYAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T11:10:22.663Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\appsettings.json",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\appsettings.json",
               "RelativeDocumentMoniker": "src\\Docom.API\\appsettings.json",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\appsettings.json",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\appsettings.json",
               "RelativeToolTip": "src\\Docom.API\\appsettings.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-06T17:11:50.883Z",
               "EditorCaption": ""
@@ -173,74 +158,79 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Program.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Program.cs",
               "RelativeDocumentMoniker": "src\\Docom.API\\Program.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Program.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Program.cs",
               "RelativeToolTip": "src\\Docom.API\\Program.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAASwCgAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAADwv2cAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T17:11:47.758Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "DoctorsController.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\DoctorsController.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\DoctorsController.cs",
               "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\DoctorsController.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\DoctorsController.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\DoctorsController.cs",
               "RelativeToolTip": "src\\Docom.API\\Controllers\\DoctorsController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T19:54:18.899Z"
+              "WhenOpened": "2026-03-13T19:54:18.899Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\TokenService.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\TokenService.cs",
               "RelativeDocumentMoniker": "src\\Docom.Application\\Services\\TokenService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\TokenService.cs",
               "RelativeToolTip": "src\\Docom.Application\\Services\\TokenService.cs",
               "ViewState": "AgIAAKMAAAAAAAAAAAAkwLMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T21:24:03.33Z"
+              "WhenOpened": "2026-03-13T21:24:03.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "TokensController.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\TokensController.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\TokensController.cs",
               "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\TokensController.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\TokensController.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\TokensController.cs",
               "RelativeToolTip": "src\\Docom.API\\Controllers\\TokensController.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAswDAAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T11:09:43.804Z"
+              "WhenOpened": "2026-03-09T11:09:43.804Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "SessionService.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\SessionService.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\SessionService.cs",
               "RelativeDocumentMoniker": "src\\Docom.Application\\Services\\SessionService.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.Application\\Services\\SessionService.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.Application\\Services\\SessionService.cs",
               "RelativeToolTip": "src\\Docom.Application\\Services\\SessionService.cs",
               "ViewState": "AgIAAKsAAAAAAAAAAAAUwL8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T20:16:47.919Z"
+              "WhenOpened": "2026-03-13T20:16:47.919Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "SessionsController.cs",
-              "DocumentMoniker": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\SessionsController.cs",
+              "DocumentMoniker": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\SessionsController.cs",
               "RelativeDocumentMoniker": "src\\Docom.API\\Controllers\\SessionsController.cs",
-              "ToolTip": "C:\\Deepak\\Workspace\\DOCOM\\backend\\src\\Docom.API\\Controllers\\SessionsController.cs",
+              "ToolTip": "C:\\Deepak\\Workspace\\Docom\\backend\\src\\Docom.API\\Controllers\\SessionsController.cs",
               "RelativeToolTip": "src\\Docom.API\\Controllers\\SessionsController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAzwB4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T19:49:42.493Z"
+              "WhenOpened": "2026-03-13T19:49:42.493Z",
+              "EditorCaption": ""
             }
           ]
         }

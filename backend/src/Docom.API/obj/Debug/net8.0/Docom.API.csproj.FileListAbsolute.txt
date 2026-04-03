@@ -144,3 +144,9 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Debug\net8.0\Docom.API.pdb
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Debug\net8.0\Docom.API.genruntimeconfig.cache
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Debug\net8.0\ref\Docom.API.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Debug\net8.0\Docom.API.sourcelink.json
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\bin\Debug\net8.0\MailKit.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\bin\Debug\net8.0\MimeKit.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll

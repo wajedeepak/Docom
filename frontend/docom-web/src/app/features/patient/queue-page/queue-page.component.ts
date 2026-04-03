@@ -65,7 +65,7 @@ export class QueuePageComponent implements OnInit, OnDestroy {
   });
 
   private subs         = new Subscription();
-  private pollInterval = 15_000;
+  private pollInterval = 2_000;  // 2 seconds
 
   ngOnInit(): void {
     this.slug = this.route.snapshot.paramMap.get('slug') ?? '';

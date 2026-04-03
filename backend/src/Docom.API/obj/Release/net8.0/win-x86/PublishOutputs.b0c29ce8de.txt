@@ -6,7 +6,9 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTm
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Docom.API.pdb
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Azure.Core.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Azure.Identity.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\BouncyCastle.Cryptography.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Humanizer.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\MailKit.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.CodeAnalysis.dll
@@ -30,6 +32,7 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTm
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\MimeKit.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Mono.TextTemplating.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -45,6 +48,7 @@ C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTm
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Memory.Data.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Runtime.Caching.dll
+C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Security.Cryptography.Pkcs.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Security.Permissions.dll
 C:\Deepak\Workspace\DOCOM\backend\src\Docom.API\obj\Release\net8.0\win-x86\PubTmp\Out\System.Windows.Extensions.dll

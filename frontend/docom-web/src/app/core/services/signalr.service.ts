@@ -23,6 +23,7 @@ export interface SessionChangedEvent {
 export class SignalRService implements OnDestroy {
   private connection: signalR.HubConnection | null = null;
   private currentGroup: string | null = null;
+  private reconnectTimeout: any = null;
 
   readonly queueAdvanced$ = new Subject<QueueAdvancedEvent>();
   readonly tokenCreated$ = new Subject<TokenCreatedEvent>();
@@ -33,62 +34,118 @@ export class SignalRService implements OnDestroy {
   constructor(private authService: AuthService) {}
 
   async connectToDoctor(slug: string): Promise<void> {
-    if (this.connection && this.currentGroup === slug) return;
+    if (this.connection && this.currentGroup === slug) {
+      console.log('[SignalR] Already connected to doctor:', slug);
+      return;
+    }
 
     await this.disconnect();
 
-    const token = this.authService.getToken();
-    const builder = new signalR.HubConnectionBuilder()
-      .withUrl(`${environment.hubUrl}/hubs/queue`, {
-        accessTokenFactory: () => token ?? '',
-        transport: signalR.HttpTransportType.WebSockets |
-                   signalR.HttpTransportType.ServerSentEvents |
-                   signalR.HttpTransportType.LongPolling
-      })
-      .withAutomaticReconnect([0, 2000, 5000, 10000, 30000])
-      .configureLogging(signalR.LogLevel.Warning);
-
-    this.connection = builder.build();
-
-    this.connection.on('QueueAdvanced', (data: QueueAdvancedEvent) => {
-      this.queueAdvanced$.next(data);
-    });
-
-    this.connection.on('TokenCreated', (data: TokenCreatedEvent) => {
-      this.tokenCreated$.next(data);
-    });
-
-    this.connection.on('TokenSkipped', (data: any) => {
-      this.tokenSkipped$.next(data);
-    });
-
-    this.connection.on('SessionChanged', (data: SessionChangedEvent) => {
-      this.sessionChanged$.next(data);
-    });
-
-    this.connection.onreconnected(() => {
-      if (this.currentGroup) {
-        this.connection?.invoke('JoinDoctorQueue', this.currentGroup);
+    try {
+      const token = this.authService.getToken();
+      if (!token) {
+        console.warn('[SignalR] No auth token available. Connect may fail.');
       }
+
+      const hubUrl = `${environment.hubUrl}/hubs/queue`;
+      console.log('[SignalR] Connecting to:', hubUrl);
+
+      const builder = new signalR.HubConnectionBuilder()
+        .withUrl(hubUrl, {
+          accessTokenFactory: () => {
+            const currentToken = this.authService.getToken();
+            console.log('[SignalR] Using token:', currentToken ? 'yes' : 'no');
+            return currentToken ?? '';
+          },
+          // Explicitly prefer WebSocket first, then fallback
+          transport: signalR.HttpTransportType.WebSockets |
+                     signalR.HttpTransportType.ServerSentEvents |
+                     signalR.HttpTransportType.LongPolling,
+          skipNegotiation: false,
+          withCredentials: true
+        })
+        .withAutomaticReconnect([0, 2000, 5000, 10000, 30000])
+        .configureLogging(signalR.LogLevel.Information)
+        .withKeepAliveInterval(15_000);
+
+      this.connection = builder.build();
+      if (!this.connection) {
+        throw new Error('[SignalR] Failed to build connection');
+      }
+
+      const conn = this.connection;
+
+      conn.on('QueueAdvanced', (data: QueueAdvancedEvent) => {
+        console.log('[SignalR] QueueAdvanced received:', data);
+        this.queueAdvanced$.next(data);
+      });
+
+      conn.on('TokenCreated', (data: TokenCreatedEvent) => {
+        console.log('[SignalR] TokenCreated received:', data);
+        this.tokenCreated$.next(data);
+      });
+
+      conn.on('TokenSkipped', (data: any) => {
+        console.log('[SignalR] TokenSkipped received:', data);
+        this.tokenSkipped$.next(data);
+      });
+
+      conn.on('SessionChanged', (data: SessionChangedEvent) => {
+        console.log('[SignalR] SessionChanged received:', data);
+        this.sessionChanged$.next(data);
+      });
+
+      conn.onreconnecting(() => {
+        console.warn('[SignalR] Connection lost. Reconnecting...');
+        this.connected$.next(false);
+      });
+
+      conn.onreconnected(() => {
+        console.log('[SignalR] Reconnected. Rejoining group:', this.currentGroup);
+        if (this.currentGroup) {
+          conn.invoke('JoinDoctorQueue', this.currentGroup)
+            .catch(err => console.error('[SignalR] Failed to rejoin group:', err));
+        }
+        this.connected$.next(true);
+      });
+
+      conn.onclose((error) => {
+        console.error('[SignalR] Connection closed:', error);
+        this.connected$.next(false);
+      });
+
+      await this.connection.start();
+      console.log('[SignalR] Connected. Joining group:', slug);
+
+      await this.connection.invoke('JoinDoctorQueue', slug);
+      this.currentGroup = slug;
       this.connected$.next(true);
-    });
-
-    this.connection.onclose(() => this.connected$.next(false));
-
-    await this.connection.start();
-    await this.connection.invoke('JoinDoctorQueue', slug);
-    this.currentGroup = slug;
-    this.connected$.next(true);
+    } catch (err) {
+      console.error('[SignalR] Connection failed:', err);
+      this.connected$.next(false);
+      throw err;
+    }
   }
 
   async disconnect(): Promise<void> {
+    if (this.reconnectTimeout) {
+      clearTimeout(this.reconnectTimeout);
+      this.reconnectTimeout = null;
+    }
+
     if (this.connection) {
-      if (this.currentGroup) {
-        await this.connection.invoke('LeaveDoctorQueue', this.currentGroup).catch(() => {});
+      try {
+        if (this.currentGroup) {
+          await this.connection.invoke('LeaveDoctorQueue', this.currentGroup).catch(() => {});
+        }
+        await this.connection.stop();
+        console.log('[SignalR] Disconnected');
+      } catch (err) {
+        console.error('[SignalR] Error during disconnect:', err);
       }
-      await this.connection.stop().catch(() => {});
       this.connection = null;
       this.currentGroup = null;
+      this.connected$.next(false);
     }
   }
 

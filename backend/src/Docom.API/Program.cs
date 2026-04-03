@@ -38,9 +38,9 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPasswordService, PasswordService>();
 // Use DevOtpService in Development (prints OTP to console), EmailOtpService in Production
 if (builder.Environment.IsDevelopment())
-    builder.Services.AddScoped<IOtpService, DevOtpService>();
+  builder.Services.AddScoped<IOtpService, DevOtpService>();
 else
-    builder.Services.AddScoped<IOtpService, EmailOtpService>();
+  builder.Services.AddScoped<IOtpService, EmailOtpService>();
 
 builder.Services.AddScoped<IQueueNotifier, QueueNotifier>();
 
@@ -80,7 +80,22 @@ builder.Services.AddAuthorization();
 builder.Services.AddSignalR(options =>
 {
     options.EnableDetailedErrors = builder.Environment.IsDevelopment();
+    options.KeepAliveInterval = TimeSpan.FromSeconds(15);
+    options.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+    options.HandshakeTimeout = TimeSpan.FromSeconds(15);
+    options.StreamBufferCapacity = 32;
+    options.MaximumReceiveMessageSize = 32 * 1024;
 });
+
+// WebSocket configuration for production
+if (!builder.Environment.IsDevelopment())
+{
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.Limits.MinRequestBodyDataRate = null;
+        options.Limits.MinResponseDataRate = null;
+    });
+}
 
 // ─── Controllers ──────────────────────────────────────────────────────────────
 builder.Services.AddControllers();
@@ -145,8 +160,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 app.UseCors("WebApp");
+app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
