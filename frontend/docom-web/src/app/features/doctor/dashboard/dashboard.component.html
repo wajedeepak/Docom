@@ -1,14 +1,19 @@
-<div class="dashboard">
+<div class="dashboard" [class.sidebar-open]="sidebarOpen()">
+
+  <!-- Mobile Menu Button -->
+  <button mat-icon-button class="mobile-menu-btn" (click)="toggleSidebar()" matTooltip="Toggle menu">
+    <mat-icon>{{ sidebarOpen() ? 'close' : 'menu' }}</mat-icon>
+  </button>
 
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" [class.sidebar--mobile-open]="sidebarOpen()">
     <div class="sidebar-brand">
       <div class="brand-icon">D</div>
       <span class="brand-name">docom</span>
     </div>
 
     <nav class="sidebar-nav">
-      <a class="nav-item nav-item--active">
+      <a class="nav-item nav-item--active" (click)="closeSidebar()">
         <mat-icon>dashboard</mat-icon>
         <span>Dashboard</span>
       </a>
@@ -27,6 +32,9 @@
       </button>
     </div>
   </aside>
+
+  <!-- Sidebar Overlay (Mobile) -->
+  <div class="sidebar-overlay" [class.sidebar-overlay--visible]="sidebarOpen()" (click)="closeSidebar()"></div>
 
   <!-- Main Content -->
   <main class="main">

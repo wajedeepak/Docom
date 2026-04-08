@@ -103,13 +103,16 @@ builder.Services.AddControllers();
 // ─── CORS ─────────────────────────────────────────────────────────────────────
 builder.Services.AddCors(options =>
 {
+    var origins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()
+        ?? ["https://docom.in", "http://localhost:4200"];
+    
     options.AddPolicy("WebApp", policy =>
         policy
-            .WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()
-                ?? ["https://docom.in", "http://localhost:4200"])
+            .WithOrigins(origins)
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials() // Required for SignalR
+            .WithExposedHeaders("Content-Type", "Authorization")
     );
 });
 
@@ -167,6 +170,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<QueueHub>("/hubs/queue");
+app.MapHub<QueueHub>("/api/hubs/queue");
 
 app.Run();

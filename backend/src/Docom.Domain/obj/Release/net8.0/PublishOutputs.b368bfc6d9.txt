@@ -1,3 +1,0 @@
-C:\Deepak\Workspace\Docom\backend\publish\Docom.Domain.dll
-C:\Deepak\Workspace\Docom\backend\publish\Docom.Domain.deps.json
-C:\Deepak\Workspace\Docom\backend\publish\Docom.Domain.pdb

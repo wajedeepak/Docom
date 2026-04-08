@@ -1,5 +1,9 @@
 .doctors-page {
   max-width: 1100px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 }
 
 .page-header {
@@ -8,6 +12,16 @@
   justify-content: space-between;
   margin-bottom: 24px;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+
+    button {
+      width: 100%;
+      align-self: flex-start;
+    }
+  }
 }
 
 .page-title {
@@ -15,12 +29,20 @@
   font-weight: 800;
   color: #1a1a2e;
   margin: 0 0 4px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 }
 
 .page-sub {
   font-size: 13px;
   color: #6b7280;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .btn-primary {
@@ -40,10 +62,23 @@
   border-radius: 14px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   overflow: hidden;
+  overflow-x: auto;
+
+  @media (max-width: 768px) {
+    border-radius: 10px;
+  }
 }
 
 .doctors-table {
   width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+
+    th, td {
+      padding: 8px 12px !important;
+    }
+  }
 }
 
 .slug-link {
@@ -54,6 +89,7 @@
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
+  word-break: break-word;
 
   &:hover { text-decoration: underline; }
 
@@ -62,12 +98,20 @@
     width: 13px;
     height: 13px;
   }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .doctor-cell {
   display: flex;
   align-items: center;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 }
 
 .doc-avatar {
@@ -83,6 +127,12 @@
   justify-content: center;
   text-transform: uppercase;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
 }
 
 .doc-name {
@@ -90,6 +140,10 @@
   font-weight: 600;
   color: #1a1a2e;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .status-badge {
@@ -99,9 +153,15 @@
   border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  white-space: nowrap;
 
   &--active { background: #e6f4ea; color: #1e8e3e; }
   &--inactive { background: #f3f4f6; color: #9ca3af; }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
 }
 
 .empty-state {
@@ -109,15 +169,29 @@
   padding: 60px;
   color: #9ca3af;
 
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+
   mat-icon {
     font-size: 48px;
     width: 48px;
     height: 48px;
     margin-bottom: 12px;
+
+    @media (max-width: 768px) {
+      font-size: 36px;
+      width: 36px;
+      height: 36px;
+    }
   }
 
   p {
     font-size: 14px;
     margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
   }
 }

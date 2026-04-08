@@ -47,7 +47,7 @@ export class SignalRService implements OnDestroy {
         console.warn('[SignalR] No auth token available. Connect may fail.');
       }
 
-      const hubUrl = `${environment.hubUrl}/hubs/queue`;
+      const hubUrl = `${environment.hubUrl}/api/hubs/queue`;
       console.log('[SignalR] Connecting to:', hubUrl);
 
       const builder = new signalR.HubConnectionBuilder()
@@ -103,14 +103,26 @@ export class SignalRService implements OnDestroy {
       conn.onreconnected(() => {
         console.log('[SignalR] Reconnected. Rejoining group:', this.currentGroup);
         if (this.currentGroup) {
+          // Wrap rejoin in timeout to detect hanging operations
+          const rejoinTimeout = setTimeout(() => {
+            console.warn('[SignalR] Group rejoin appears to be hanging after reconnect');
+          }, 15000);
+
           conn.invoke('JoinDoctorQueue', this.currentGroup)
-            .catch(err => console.error('[SignalR] Failed to rejoin group:', err));
+            .then(() => clearTimeout(rejoinTimeout))
+            .catch(err => {
+              clearTimeout(rejoinTimeout);
+              console.error('[SignalR] Failed to rejoin group:', err);
+            });
         }
         this.connected$.next(true);
       });
 
       conn.onclose((error) => {
         console.error('[SignalR] Connection closed:', error);
+        if (error) {
+          console.error('[SignalR] Close error type:', error.message);
+        }
         this.connected$.next(false);
       });
 
@@ -122,6 +134,14 @@ export class SignalRService implements OnDestroy {
       this.connected$.next(true);
     } catch (err) {
       console.error('[SignalR] Connection failed:', err);
+      if (err instanceof Error) {
+        console.error('[SignalR] Error message:', err.message);
+        console.error('[SignalR] Error stack:', err.stack);
+      }
+      console.error('[SignalR] Diagnosing failure:');
+      console.error('[SignalR] - Check network tab for WebSocket connection attempt');
+      console.error('[SignalR] - Expected URL: wss://docom.in/api/hubs/queue');
+      console.error('[SignalR] - Check CORS headers and SSL certificate validity');
       this.connected$.next(false);
       throw err;
     }

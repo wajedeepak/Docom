@@ -50,6 +50,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   queueState = signal<QueueStateDto | null>(null);
   loading = signal(true);
   actionLoading = signal<string | null>(null);
+  sidebarOpen = signal(false);
 
   currentToken = computed(() => this.queueState()?.currentTokenNumber ?? 0);
   waitingCount = computed(() => this.queueState()?.waitingCount ?? 0);
@@ -188,6 +189,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
       Completed: 'completed'
     };
     return map[status] ?? '';
+  }
+
+  toggleSidebar(): void {
+    this.sidebarOpen.update(v => !v);
+  }
+
+  closeSidebar(): void {
+    this.sidebarOpen.set(false);
   }
 
   private doAction<T>(
