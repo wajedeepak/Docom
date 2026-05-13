@@ -174,7 +174,7 @@
             (click)="nextPatient()">
             @if (actionLoading() === 'next') { <mat-spinner diameter="20" /> }
             @else {
-              <mat-icon>skip_next</mat-icon>
+              <!-- <mat-icon>skip_next</mat-icon> -->
               Next Patient
             }
           </button>
@@ -186,7 +186,7 @@
             (click)="skipPatient()">
             @if (actionLoading() === 'skip') { <mat-spinner diameter="20" /> }
             @else {
-              <mat-icon>redo</mat-icon>
+              <!-- <mat-icon>redo</mat-icon> -->
               Skip
             }
           </button>
@@ -199,7 +199,7 @@
             matTooltip="Add walk-in patient instantly">
             @if (actionLoading() === 'walkin') { <mat-spinner diameter="20" /> }
             @else {
-              <mat-icon>person_add</mat-icon>
+              <!-- <mat-icon>person_add</mat-icon> -->
               Walk-in
             }
           </button>

@@ -138,7 +138,7 @@
           </div>
         }
 
-        <div class="my-token-card">
+        <div class="my-token-card" [ngClass]="{ 'my-token-card--your-turn': myPosition() !== null && myPosition()! <= 0 }">
           <p class="my-token-label">Your Token</p>
           <div class="my-token-number">{{ t.tokenNumber }}</div>
           @if (patientName) {
